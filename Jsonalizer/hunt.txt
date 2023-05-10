@@ -1,0 +1,52 @@
+Session data: From 2023-05-04, 21:14:21 to 2023-05-04, 21:34:39
+Session: 00:20h
+Raw XP Gain: 139,007
+XP Gain: 208,508
+Raw XP/h: 401,159
+XP/h: 601,735
+Loot: 74,887
+Supplies: 28,992
+Balance: 45,895
+Damage: 161,305
+Damage/h: 161,305
+Healing: 51,374
+Healing/h: 51,374
+Killed Monsters:
+  60x faun
+  42x nymph
+  40x pixie
+  28x pooka
+  22x swan maiden
+  12x wisp
+Looted Items:
+  13x a strong health potion
+  1x a strong mana potion
+  6x a great mana potion
+  7x a great health potion
+  1x a small enchanted sapphire
+  2x a small enchanted emerald
+  1x a small enchanted amethyst
+  5x a small stone
+  1x an emerald bangle
+  7609x a gold coin
+  1x boots of haste
+  1x a clerical mace
+  3x a wood cape
+  4x grapes
+  2x a carrot
+  13x a cookie
+  5x a goat grass
+  3x a green mushroom
+  2x a star herb
+  3x a fern
+  1x a powder herb
+  1x a flower wreath
+  2x a small topaz
+  1x an opal
+  15x wild flowers
+  31x fresh fruit
+  10x shimmering beetles
+  12x dandelion seeds
+  11x colourful snail shell
+  2x a butterfly ring
+  7x a rainbow quartz
