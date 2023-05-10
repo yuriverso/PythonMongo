@@ -1,6 +1,7 @@
 import json
 import random
 import string
+from os import listdir
 
 
 def read_hunt(filename):
@@ -48,10 +49,12 @@ def jsonalize(filename):
     get_killed_monsters(hunt_content, monsters, hunt_dict)
     get_looted_items(hunt_content, loot, hunt_dict)
     
-    new_filename = ''.join(random.choice(string.ascii_lowercase) for i in range(10))
+    new_filename = "data"+str(len(listdir("Jsonalizer/exported"))+1)
+    #new_filename = ''.join(random.choice(string.ascii_lowercase) for i in range(10))
 
-    with open(f"exported/{new_filename}.json", 'w') as f:
+    with open(f"Jsonalizer/exported/{new_filename}.json", 'w') as f:
         json.dump(hunt_dict, f)
 
 if __name__ == "__main__":
+    print(listdir("Jsonalizer"))
     jsonalize("C:/Users/Yuri/Desktop/♠/JonasSalazarDrive/Data/tibia sessions/1.txt")
