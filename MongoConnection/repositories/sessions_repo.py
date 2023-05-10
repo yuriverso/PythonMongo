@@ -20,3 +20,8 @@ class SessionsRepository:
     def delete_documents(self, filter={}):
         data = self.__collection.delete_many(filter)
         print(str(data.deleted_count) + " documentos foram removidos")
+
+    def find_if_date(self, date):
+        filter = {"Session data": {"$regex": "From 2022-04-14"}}
+        data = self.__collection.find(filter, {"Session Data": 1, "Session": 1})
+        print([x for x in data])
