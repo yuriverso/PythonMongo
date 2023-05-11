@@ -1,4 +1,4 @@
-from jsonalizer import jsonalize
+from data_and_types import set_data_and_types
 from os import listdir
 
 print("Bem vindo!")
@@ -6,11 +6,5 @@ print("Bem vindo!")
 path = input("Digite o caminho para os arquivos com os dados registrados em .txt: ")
 path = path.replace(r'"\"', "/")
 for file in listdir(path):
-    print(file)
-    try:
-        jsonalize(f"{path}\{file}")
-    except:
-        print("erro")
-
-
-
+    set_data_and_types(f"{path}/{file}")
+    

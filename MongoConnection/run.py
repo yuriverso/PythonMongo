@@ -17,5 +17,5 @@ sessions_repo = SessionsRepository(connection)
 
 # sessions_repo.insert_list_of_documents(list_of_documents)
 
-#sessions_repo.read_all()
-sessions_repo.find_if_date("From 2022-04-14")
+sessions_repo.read_all()
+#sessions_repo.find_if_date("From 2022-04-14")
