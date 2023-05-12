@@ -5,13 +5,19 @@ class SessionsRepository:
     def read_all(self):
         print([x for x in self.__collection.find()])
 
+    def read_document(self, filter, options={}):
+        return self.__collection.find(filter, options)
+    
+    def find_max(self, field):
+        return self.__collection.find().sort(field, -1).limit(1)
+
     def insert_document(self, document):
         self.__collection.insert_one(document)
         print("Documento inserido")
 
     def insert_list_of_documents(self, documents_list):
         self.__collection.insert_many(documents_list)
-        print("Todos os documentos foram inseridos")
+        print(f"{len(documents_list)} documentos foram inseridos")
 
     def modify_document(self, filter, properties):
         data = self.__collection.update_one(filter, properties)
