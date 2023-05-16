@@ -31,3 +31,13 @@ class SessionsRepository:
         filter = {"Session data": {"$regex": "From 2022-04-14"}}
         data = self.__collection.find(filter, {"Session Data": 1, "Session": 1})
         print([x for x in data])
+
+    def aggregate_quick(self):
+        data = self.__collection.aggregate([{"$match": {"XP Gain": {"$lt": 1000000}}},
+                                            {"$project": {"_id": 0, "XP Gain": 1, "Balance": 1, "Killed Monsters": "$Killed Monsters.Name"}},
+                                            {"$group": {"_id": "XP Gain", "XP Gain": {"$sum": "XP Gain"}}}])
+        return data
+
+    def aggregate_like(self, filter):
+        data = self.__collection.aggregate(filter)
+        return data

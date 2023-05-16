@@ -17,17 +17,26 @@ connection = connection_handler.get_connection()
 sessions_repo = SessionsRepository(connection)
 
 
+#data = sessions_repo.aggregate_quick()
 
-""" list_of_documents = []
-for file in listdir("Jsonalizer/exported"):
-    filename = f"Jsonalizer/exported/{file}"
-    with open(filename, "r") as f:
-        list_of_documents.append(json.load(f))
+"""filter = [
+            {"$project": {"_id": 1, "XP Gain": 1, "Balance": 1, "Killed Monsters": 1}},
+            {"$group": {"_id": "$Killed Monsters.Name", "Count": {"$max": "$Killed Monsters.Count"}, "ID": {"$max": "$_id"}}}
+        ]
 
-sessions_repo.insert_list_of_documents(list_of_documents) """
+ag_data = sessions_repo.aggregate_like(filter)
 
-data = sessions_repo.find_max("XP Gain")
+for item in ag_data:
+    most_killed_index = item['Count'].index(max(item['Count']))
+    most_killed = item['_id'][most_killed_index]
+    
+    sessions_repo.modify_document({"_id": item["ID"]}, {"$set": {"Hunt": most_killed}})"""
 
+filter = [{"$project": {"_id": 1, "XP Gain": 1, "Balance": 1, "Hunt": 1}},
+          {"$match": {"Hunt": None}}
+         ]
+
+data = sessions_repo.aggregate_like(filter)
 
 pretty_print(data)
-#sessions_repo.find_if_date("From 2022-04-14")
+
