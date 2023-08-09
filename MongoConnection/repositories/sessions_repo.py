@@ -22,6 +22,10 @@ class SessionsRepository:
     def modify_document(self, filter, properties):
         data = self.__collection.update_one(filter, properties)
         print(str(data.modified_count) + " documento foi alterado")
+    
+    def modify_documents(self, filter, properties):
+        data = self.__collection.update_many(filter, properties)
+        print(str(data.modified_count) + " documento foi alterado")
 
     def delete_documents(self, filter={}):
         data = self.__collection.delete_many(filter)

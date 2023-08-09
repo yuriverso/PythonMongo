@@ -3,6 +3,7 @@ from repositories.sessions_repo import SessionsRepository
 from datetime import datetime
 from os import listdir
 import json
+from os import listdir
 
 
 def pretty_print(iterable):
@@ -19,7 +20,7 @@ sessions_repo = SessionsRepository(connection)
 
 #data = sessions_repo.aggregate_quick()
 
-"""filter = [
+filter = [
             {"$project": {"_id": 1, "XP Gain": 1, "Balance": 1, "Killed Monsters": 1}},
             {"$group": {"_id": "$Killed Monsters.Name", "Count": {"$max": "$Killed Monsters.Count"}, "ID": {"$max": "$_id"}}}
         ]
@@ -30,13 +31,21 @@ for item in ag_data:
     most_killed_index = item['Count'].index(max(item['Count']))
     most_killed = item['_id'][most_killed_index]
     
-    sessions_repo.modify_document({"_id": item["ID"]}, {"$set": {"Hunt": most_killed}})"""
+    sessions_repo.modify_document({"_id": item["ID"]}, {"$set": {"Hunt": most_killed}})
 
-filter = [{"$project": {"_id": 1, "XP Gain": 1, "Balance": 1, "Hunt": 1}},
-          {"$match": {"Hunt": None}}
-         ]
+#filter = [{"$project": {"_id": 1, "XP Gain": 1, "Balance": 1, "Hunt": 1}},
+#          {"$match": {"Hunt": None}}
+#         ]
 
-data = sessions_repo.aggregate_like(filter)
+#data = sessions_repo.aggregate_like(filter)
 
-pretty_print(data)
+#pretty_print(data)
+#print(len(('C:/Users/Yuri/Desktop/testeti')))
 
+"""for item in listdir('C:/Users/Yuri/Desktop/testeti'):
+    filename = f'C:/Users/Yuri/Desktop/testeti/{item}'
+    with open(filename, 'r') as f:
+        document = json.load(f)
+        sessions_repo.insert_document(document)"""
+
+#sessions_repo.modify_documents({}, {'$rename': {"Session length": "Session"}})

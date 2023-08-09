@@ -9,14 +9,23 @@ def read_json(filename):
     return content
 
 def date_setup(content):
-    from_date_string = content["Session data"].split("From")[1].split("to")[0].replace(",", "").strip()
-    to_date_string = content["Session data"].split("From")[1].split("to")[1].replace(",", "").strip()
+    #from_date_string = content["Session data"].split("From")[1].split("to")[0].replace(",", "").strip()
+    #to_date_string = content["Session data"].split("From")[1].split("to")[1].replace(",", "").strip()
 
-    from_date = datetime.strptime(from_date_string, "%Y-%m-%d %H:%M:%S").timestamp()
-    to_date = datetime.strptime(to_date_string, "%Y-%m-%d %H:%M:%S").timestamp()
+    #from_date = datetime.strptime(from_date_string, "%Y-%m-%d %H:%M:%S").timestamp()
+    #to_date = datetime.strptime(to_date_string, "%Y-%m-%d %H:%M:%S").timestamp()
 
-    content["From"] = from_date
-    content["To"] = to_date
+    #content["From"] = from_date
+    #content["To"] = to_date
+
+    from_date_string = content['Session start']
+    to_date_string = content['Session end']
+
+    from_date = datetime.strptime(from_date_string, "%Y-%m-%d, %H:%M:%S").timestamp()
+    to_date = datetime.strptime(to_date_string, "%Y-%m-%d, %H:%M:%S").timestamp()
+
+    content['From'] = from_date
+    content['To'] = to_date
 
 def types_setup(content):
     list_to_update = [
